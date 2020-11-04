@@ -1,0 +1,14 @@
+{
+  "extends": [
+    "wesbos"
+  ],
+  "rules": {
+    "react/destructuring-assignment": [
+      "always",
+      {
+        "ignoreClassFields": true
+      }
+    ],
+    "no-unused-expressions": false
+  }
+}
