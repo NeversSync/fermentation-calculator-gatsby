@@ -1,8 +1,12 @@
-import React from 'react'
+import React, {useState} from 'react'
 
 
 export default function Conversion(props) { 
 
+    
+      console.log(props.selectedFerment)
+      console.log(props.amount)
+      console.log(props.salinity)
 // let saltAmount;
 //     !saltAmount && props.selectedFerment !== 0
 //         ?
@@ -10,7 +14,8 @@ export default function Conversion(props) {
 //         :
 //     props.selectedFerment*props.amount ;
     
-let saltAmount = props.selectedFerment*props.amount; 
+let saltAmount = props.selectedFerment*props.amount 
+// : saltAmount = props.ferments[0].value; 
 // !== 0 ? props.selectedFerment*props.amount : 0;
 
 // if(!saltAmount && props.selectedFerment.value) {
@@ -19,13 +24,11 @@ let saltAmount = props.selectedFerment*props.amount;
 
     // const {
     //     currencyOptions
-    // } = props
-
-    
+    // } = props    
     return (
         <div className="ferment">
         <div className="first-select">
-           <input className="ferment-input" type="number" value={props.amount} onChange={props.onChangeAmount}/>
+           <input className="ferment-input" type="number" value={props.amount} onChange={props.handleChange}/>
             <p> kg of </p>
            <select 
       value={props.selectedFerment}
@@ -36,7 +39,7 @@ let saltAmount = props.selectedFerment*props.amount;
            </select>
            </div>
            <p className="equals">is</p>
-           <p> <span>{saltAmount} </span>grams of salt</p>
+           <p> <span>{saltAmount || props.ferments[0].value*1000} </span>grams of salt</p>
            {/* <input className="salinity-input" type="number" value={props.selectedFerment*props.amount} onChange={props.onChangeSalinity}/>  */}
                
            

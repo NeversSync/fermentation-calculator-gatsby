@@ -7,15 +7,18 @@ import '../components/App.css';
 import Conversions from '../components/Conversions';
 import Salinity from '../components/Salinity';
 import React, { useEffect, useState } from 'react'
+import Searchbar from "../components/SearchBar";
+import Miso from '../components/Miso'
 
 
 
 export default function App() {
 
   // const [fermentationOptions, setFermentationOptions] = useState([])
-  const [ferment, setFerment] = useState()
-  const [conversion, setConversion] = useState()
+  const [ferment, setFerment] = useState([])
+  const [selectedFerment, setSelectedFerment] = useState(null)
   const [amount, setAmount] = useState(1)
+  const [conversion, setConversion] = useState()
   const [salinity, setSalinity] = useState()
 
 
@@ -42,29 +45,38 @@ export default function App() {
 useEffect(() => {
       // setFermentationOptions([data, ...salinity])
       const firstFerment =ferments[0]
-      setFerment(firstFerment)
+      setFerment(ferments)
+      setSelectedFerment(firstFerment)
       setSalinity(firstFerment.value)      
     }, [])
     //does this need to change everytime a new ferment is selected?
     
+    const onFermentSelect = ferment => {
+      setSelectedFerment(ferment)
+    }
 
-  function handleAmountChange(e) {
-    setAmount(e.target.value)
-  }
-console.log(amount)
+    function handleChange(e) {
+        setAmount(e.target.value)
+        //doesn't change
+        setSalinity(selectedFerment * amount)
+        
+      }  
   return (
     <>
     <title>Fermentation Calculator</title>
+    {/* <Searchbar /> */}
    <Conversions
+
         ferments={ferments}
         selectedFerment={ferment}
         onChangeFerment={e => setFerment(e.target.value)} //e.target.value = whatever the value of our select option 
+        //doesn't work
         onChangeSalinity={e => setSalinity(e.target.value * amount)} 
+        handleChange={handleChange}
         amount={amount}
-        onChangeAmount={handleAmountChange}
-        salinity={salinity}
-        
-   />   
+        salinity={salinity}  
+        />
+
    </>
   );
 }
