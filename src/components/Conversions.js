@@ -33,7 +33,7 @@ let saltAmount = props.selectedFerment*props.amount
            <select 
       value={props.selectedFerment}
       onChange={props.onChangeFerment}>
-           {props.ferments.map(option => (
+           {props.ferments.map((option) => (
                <option key={option.label} value ={(option.value * 1000).toFixed(1)}>{option.label}</option>
                ))}  
            </select>
