@@ -14,32 +14,32 @@ import Miso from '../components/Miso'
 
 export default function App() {
 
+  
+  const ferments = [
+    {label: "Kimchi", value: .02},
+    {label: "Sauerkraut", value: .02},
+    {label: "Bell Peppers", value: .035},
+    {label: "Onions", value: .035},
+    {label: "Cucumbers", value: .035},
+    {label: "Pepper", value: .05},
+    {label: "Cauliflower", value: .02},
+    {label: "Carrots", value: .02},
+    {label: "Salsa", value: .02},
+    {label: "Green Beans", value: .02},
+    {label: "Sweetest Miso", value: .06},
+    {label: "Sweet Miso", value: .045},
+    {label: "Mellow Miso", value: .1},
+    {label: "Medium Miso", value: .12},
+    {label: "Salty Miso", value: .16}
+  ]
   // const [fermentationOptions, setFermentationOptions] = useState([])
-  const [ferment, setFerment] = useState([])
+  const [ferment, setFerment] = useState(ferments[0].value)
   const [selectedFerment, setSelectedFerment] = useState(null)
   const [amount, setAmount] = useState(1)
   const [conversion, setConversion] = useState()
   const [salinity, setSalinity] = useState()
 
-
-  const ferments = [
-    {label: "Kimchi", value: .02},
-     {label: "Sauerkraut", value: .02},
-     {label: "Bell Peppers", value: .035},
-     {label: "Onions", value: .035},
-     {label: "Cucumbers", value: .035},
-     {label: "Pepper", value: .05},
-     {label: "Cauliflower", value: .02},
-    {label: "Carrots", value: .02},
-     {label: "Salsa", value: .02},
-     {label: "Green Beans", value: .02},
-     {label: "Sweetest Miso", value: .06},
-     {label: "Sweet Miso", value: .045},
-     {label: "Mellow Miso", value: .1},
-     {label: "Medium Miso", value: .12},
-     {label: "Salty Miso", value: .16}
-]
-
+console.log(ferment)
 
 
 useEffect(() => {
