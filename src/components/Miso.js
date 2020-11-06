@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import styled from '@emotion/styled'
 import miso from '../pages/miso'
+import './Miso.css'
 
 export default function Miso() {
   
@@ -33,7 +34,7 @@ export default function Miso() {
   })
 
     return(
-      <div id="container">
+      <div className="container">
 
              {/* btn container */}
       <div className='btn-container'>
@@ -51,10 +52,10 @@ export default function Miso() {
             </button>
           )
         })}
-      </div>
-            
-        <div id="koji">
+        </div>
+          <div className="input-ctn">
         <p>for</p>
+        <div id="koji">
           <input
               type = "number" 
               value = {ratio.k} 
@@ -72,8 +73,9 @@ export default function Miso() {
             <p>g of legumes and</p>
         </div>
         <div id="salt">
-            <p> {ratio.s} g of salt</p>
-        </div>
+            <p><strong>{ratio.s}</strong> g of salt</p>
+        </div>  
+      </div>
       </div>
     )
   }
