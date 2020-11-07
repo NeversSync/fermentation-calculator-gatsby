@@ -26,41 +26,40 @@ export default function App() {
     {label: "Carrots", value: .02},
     {label: "Salsa", value: .02},
     {label: "Green Beans", value: .02},
-    {label: "Sweetest Miso", value: .06},
-    {label: "Sweet Miso", value: .045},
-    {label: "Mellow Miso", value: .1},
-    {label: "Medium Miso", value: .12},
-    {label: "Salty Miso", value: .16}
   ]
   // const [fermentationOptions, setFermentationOptions] = useState([])
-  const [ferment, setFerment] = useState(ferments[0].value)
+  const [ferment, setFerment] = useState(ferments[0].value*1000)
   const [selectedFerment, setSelectedFerment] = useState(null)
   const [amount, setAmount] = useState(1)
-  const [conversion, setConversion] = useState()
-  const [salinity, setSalinity] = useState()
+  const [salinity, setSalinity] = useState(ferments[0].value*1000)
 
 console.log(ferment)
 
 
-useEffect(() => {
-      // setFermentationOptions([data, ...salinity])
-      const firstFerment =ferments[0]
-      setFerment(ferments)
-      setSelectedFerment(firstFerment)
-      setSalinity(firstFerment.value)      
-    }, [])
+// useEffect(() => {
+//       // setFermentationOptions([data, ...salinity])
+//       const firstFerment =ferments[0]
+//       setFerment(ferments)
+//       setSelectedFerment(firstFerment)
+//       setSalinity(firstFerment.value)      
+//     }, [])
     //does this need to change everytime a new ferment is selected?
     
-    const onFermentSelect = ferment => {
-      setSelectedFerment(ferment)
-    }
+    // const onFermentSelect = ferment => {
+    //   setSelectedFerment(ferment)
+    // }
 
-    function handleChange(e) {
+    function handleSaltChange(e) {
         setAmount(e.target.value)
         //doesn't change
-        setSalinity(selectedFerment * amount)
-        
+        setSalinity(ferment * amount)        
       }  
+
+      function handleFermentChange(e) {
+        setFerment(e.target.value)
+      }
+
+console.log(salinity)
   return (
     <>
     <title>Fermentation Calculator</title>
@@ -69,10 +68,10 @@ useEffect(() => {
 
         ferments={ferments}
         selectedFerment={ferment}
-        onChangeFerment={e => setFerment(e.target.value)} //e.target.value = whatever the value of our select option 
+        onChangeFerment={handleFermentChange} //e.target.value = whatever the value of our select option 
         //doesn't work
         onChangeSalinity={e => setSalinity(e.target.value * amount)} 
-        handleChange={handleChange}
+        handleChange={handleSaltChange}
         amount={amount}
         salinity={salinity}  
         />
